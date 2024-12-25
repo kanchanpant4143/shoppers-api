@@ -27,12 +27,6 @@ public class ShopperController {
 		return ResponseEntity.ok(shopper);
 	}
 
-	@PostMapping("/shoppers/list")
-	public ResponseEntity<List<Shopper>> saveAllShoppers(@RequestBody List<CreateShopperRequest> request) {
-		List<Shopper> shoppers = shopperService.saveAllShoppers(shopperMapper.mapAllShoppersData(request));
-		return ResponseEntity.ok(shoppers);
-	}
-
 	@GetMapping("/shoppers")
 	public ResponseEntity<List<Shopper>> getAllShoppers() {
 		List<Shopper> shoppers = shopperService.getAllShoppers();

@@ -96,14 +96,7 @@ public class ShopperServiceImpl implements ShopperService {
 	}
 
 	@Override
-	public List<Shopper> saveAllShoppers(List<Shopper> allShoppersData) {
-		return shopperRepo.saveAll(allShoppersData);
-	}
-
-	@Override
 	public List<String> getShoppersByProduct(String productId, Integer limit) {
-		// List<String> shopperIds = shelfRepo.findByProductId(productId, limit);
 		return shopperRepoImpl.getShopperByProductId(productId, limit);
-
 	}
 }

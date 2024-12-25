@@ -17,8 +17,6 @@ public interface ShopperService {
 
 	List<Product> getProductsByShopper(String shopperId);
 
-	List<Shopper> saveAllShoppers(List<Shopper> allShoppersData);
-
 	List<String> getShoppersByProduct(String productId, Integer limit);
 
 }
