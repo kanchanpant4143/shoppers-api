@@ -6,6 +6,9 @@ import com.ssis.civalue.mapper.ShopperMapper;
 import com.ssis.civalue.models.Product;
 import com.ssis.civalue.models.Shopper;
 import com.ssis.civalue.service.ShopperService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +44,7 @@ public class ShopperController {
 
 	@PostMapping("/shoppers/{shopperId}")
 	public ResponseEntity<List<Product>> getProductsByShopperId(@PathVariable("shopperId") String shopperId,
-			@RequestBody GetProductsRequest request) {
+			@Valid @RequestBody GetProductsRequest request) {
 		List<Product> products = shopperService.getProductsByShopper(shopperId, request);
 		return ResponseEntity.ok(products);
 	}
@@ -52,13 +55,5 @@ public class ShopperController {
 		List<String> shoppers = shopperService.getShoppersByProduct(productId, limit);
 		return ResponseEntity.ok(shoppers);
 	}
-
-	/*
-	 * @PostMapping("/products/{productId}") public ResponseEntity<List<Shopper>>
-	 * getShoppersByProduct(@PathVariable("productId") String
-	 * productId, @RequestBody GetShoppersRequest getShoppersRequest) {
-	 * List<Shopper> shoppers = productService.getProductsByShopper(productId,
-	 * getShoppersRequest); return ResponseEntity.ok(shoppers); }
-	 */
 
 }

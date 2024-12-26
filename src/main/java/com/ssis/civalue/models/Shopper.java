@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +35,8 @@ public class Shopper implements Serializable {
 	@Column(name = "shopper_id", unique = true, nullable = false)
 	private String shopperId;
 
-	@OneToMany(targetEntity = Shelf.class, mappedBy = "shopper", cascade = CascadeType.ALL)	
+	@JsonIgnore
+	@OneToMany(targetEntity = Shelf.class, mappedBy = "shopper", cascade = CascadeType.ALL)
 	private List<Shelf> shelf = new ArrayList<>();
 
 }
