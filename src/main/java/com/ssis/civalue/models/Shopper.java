@@ -34,8 +34,7 @@ public class Shopper implements Serializable {
 	private Long id;
 	@Column(name = "shopper_id", unique = true, nullable = false)
 	private String shopperId;
-
-	@JsonIgnore
+	
 	@OneToMany(targetEntity = Shelf.class, mappedBy = "shopper", cascade = CascadeType.ALL)
 	private List<Shelf> shelf = new ArrayList<>();
 

@@ -2,6 +2,8 @@ package com.ssis.civalue.models;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,7 @@ public class Shelf {
 	@JoinColumn(name = "product_id", referencedColumnName = "product_id")
 	private Product product;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "shopper_id", referencedColumnName = "shopper_id")
 	private Shopper shopper;
