@@ -8,6 +8,7 @@ import com.ssis.civalue.models.Shopper;
 import com.ssis.civalue.service.ShopperService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class ShopperController {
 
@@ -51,7 +53,7 @@ public class ShopperController {
 
 	@GetMapping("/shoppers/product/{productId}")
 	public ResponseEntity<List<String>> getShopperByProduct(@PathVariable("productId") String productId,
-			@RequestParam("limit") Integer limit) {
+			@RequestParam(name = "limit", defaultValue = "10") Integer limit) {
 		List<String> shoppers = shopperService.getShoppersByProduct(productId, limit);
 		return ResponseEntity.ok(shoppers);
 	}
